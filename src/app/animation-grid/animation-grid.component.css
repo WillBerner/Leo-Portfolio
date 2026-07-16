@@ -5,16 +5,17 @@
 }
 
 .animation-section {
-  width: 80%;
-  height: calc(100vh - 80px);
-  padding-top: 80px;
-  padding: 80px 2rem 2rem 2rem;
+  flex: 1;
+  height: 100%;
+  padding: 2rem;
   background: white;
   overflow-y: auto;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .animation-header {
+  padding-top: 3rem;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #333;
@@ -29,8 +30,9 @@
 
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
 }
 
 .video-card {
@@ -81,6 +83,19 @@
   line-height: 1.5;
 }
 
+@media (max-width: 1200px) {
+  .videos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
 @media (max-width: 768px) {
   .animation-section {
     width: 100%;
@@ -93,7 +108,7 @@
   }
 
   .videos-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
   }
 }
