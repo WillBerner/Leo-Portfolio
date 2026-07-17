@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --project "Leo-Portfolio" --configuration production --base-href "/Leo-Portfolio/"
+        run: npm run build --configuration production --base-href "/Leo-Portfolio/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
