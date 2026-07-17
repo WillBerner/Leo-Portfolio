@@ -31,12 +31,12 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href "./"
+        run: npm run build -- --project "Leo-Portfolio" --configuration production --base-href "/leo-portfolio/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist/Leo-Portfolio
 
   deploy:
     needs: build
