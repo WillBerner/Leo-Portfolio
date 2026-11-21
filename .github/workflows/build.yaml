@@ -31,7 +31,14 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href="/Leo-Portfolio/"
+        run: |
+          if [ -f public/CNAME ]; then
+            BASE_HREF="/"
+          else
+            BASE_HREF="/Leo-Portfolio/"
+          fi
+          npm run build -- --configuration production --base-href="$BASE_HREF"
+          cp dist/Leo-Portfolio/browser/index.html dist/Leo-Portfolio/browser/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
