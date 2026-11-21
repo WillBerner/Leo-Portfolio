@@ -1,4 +1,4 @@
-<main class="section-page">
+<main class="section-page" [attr.data-section]="section()">
   <h1>{{ title() }}</h1>
 
   @switch (section()) {
@@ -156,7 +156,7 @@
       <div class="project-list">
         @for (project of projects(); track project.title) {
           <article class="project">
-            <div class="project-media">
+            <div class="project-media" [class.single-media]="project.media.length === 1">
               @for (media of project.media; track media) {
                 <div class="media-placeholder image-placeholder" role="img" [attr.aria-label]="media + ' placeholder'">
                   <span>{{ media }}</span>
