@@ -23,10 +23,11 @@
 }
 
 .brand img {
-  width: 38px;
+  width: auto;
   height: 38px;
-  object-fit: cover;
-  object-position: 50% 25%;
+  max-width: 78px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .nav-links {
