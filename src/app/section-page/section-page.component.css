@@ -162,6 +162,49 @@ h1 {
   margin: 4px 0;
 }
 
+.resume .hobbies h2 {
+  margin: 0 0 8px;
+  text-align: left;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.section-footer {
+  min-height: 240px;
+  margin-top: 12px;
+  padding: 78px 5%;
+  border-top: 1px solid #ededed;
+  background: #fafafa;
+  text-align: center;
+  color: #202024;
+}
+
+.section-footer h2 {
+  margin: 0 0 24px;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.section-footer address {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  font-style: normal;
+}
+
+.section-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-footer a:hover,
+.section-footer a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 @media (max-width: 720px) {
   .section-page {
     padding-top: 28px;
