@@ -8,37 +8,37 @@ export const routes: Routes = [
   {
     path: 'animation',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Animation' },
+    data: { title: 'Animation', layout: 'media' },
   },
   {
     path: 'comics',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Comics' },
+    data: { title: 'Comics', layout: 'carousel' },
   },
   {
     path: 'design',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Design' },
+    data: { title: 'Design', layout: 'projects' },
   },
   {
     path: 'life-drawing',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Life Drawing' },
+    data: { title: 'Life Drawing', layout: 'gallery' },
   },
   {
     path: 'misc',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Misc.' },
+    data: { title: 'Miscellaneous pieces', layout: 'projects' },
   },
   {
     path: 'printmaking',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Printmaking' },
+    data: { title: 'Printmaking', layout: 'projects' },
   },
   {
     path: 'resume',
     loadComponent: () => import('./section-page/section-page.component').then((m) => m.SectionPageComponent),
-    data: { title: 'Resume' },
+    data: { title: 'Resume', layout: 'resume' },
   },
   { path: '**', redirectTo: '' },
 ];

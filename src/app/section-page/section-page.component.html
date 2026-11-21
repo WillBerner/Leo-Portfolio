@@ -1,13 +1,94 @@
 <main class="section-page">
-  <header>
-    <h1>{{ title() }}</h1>
-  </header>
-  <p class="intro">This section is ready for Leo's artwork and project descriptions.</p>
-  <div class="work-grid" aria-label="{{ title() }} projects">
-    @for (item of placeholders; track item) {
-      <div class="work-placeholder" role="img" [attr.aria-label]="title() + ' artwork placeholder ' + item">
-        <span>Artwork placeholder</span>
+  <h1>{{ title() }}</h1>
+
+  @switch (layout()) {
+    @case ('gallery') {
+      <div class="drawing-grid" aria-label="Life drawing artwork">
+        @for (item of galleryItems; track item) {
+          <div class="artwork placeholder-drawing" role="img" [attr.aria-label]="'Life drawing artwork placeholder ' + item">
+            <span>Artwork {{ item }}</span>
+          </div>
+        }
       </div>
     }
-  </div>
+    @case ('media') {
+      <div class="media-list">
+        @for (item of animationItems; track item.title) {
+          <article class="media-project">
+            <div class="video-placeholder" role="img" [attr.aria-label]="item.title + ' video placeholder'">
+              <span class="play-button" aria-hidden="true"></span>
+              <span>{{ item.title }}</span>
+            </div>
+            <h2>{{ item.title }}</h2>
+            <p class="meta">{{ item.meta }}</p>
+            <p>{{ item.description }}</p>
+          </article>
+        }
+      </div>
+    }
+    @case ('carousel') {
+      <div class="comic-list">
+        @for (item of comicItems; track item.title) {
+          <article class="comic-project">
+            <div class="carousel-art">
+              <button type="button" class="carousel-arrow previous" aria-label="Previous image">&#8249;</button>
+              <div class="artwork placeholder-comic" role="img" [attr.aria-label]="item.title + ' artwork placeholder'">
+                <span>{{ item.title }}</span>
+              </div>
+              <button type="button" class="carousel-arrow next" aria-label="Next image">&#8250;</button>
+            </div>
+            <p class="carousel-count">1 / 7</p>
+            <h2>{{ item.title }}</h2>
+            <p class="meta">{{ item.meta }}</p>
+            <p>{{ item.description }}</p>
+          </article>
+        }
+      </div>
+    }
+    @case ('resume') {
+      <div class="resume">
+        <section>
+          <p>Legal Name: Leo Andrew Berner</p>
+          <p>Preferred Name: Leo Rosimary Berner</p>
+          <p>Pronouns: They/Them/Elle</p>
+        </section>
+        <section>
+          <h2>Education</h2>
+          <p>The Hawbridge School<br />Public charter in Saxapahaw, North Carolina with a focus on place-based education.</p>
+          <p>Current Cumulative Weighted GPA: 4.208</p>
+        </section>
+        <section>
+          <h2>Activities</h2>
+          <p>Animator/Arts-oriented: Blender classes, Rio Grande, Argentina (2025); Polo Creating; Carolina Arts University of North Carolina School for the Arts; Animation 1 week-long residential intensive (2024, 2025); North Carolina State University; Media Arts, Design and Technology Weekends 2023-2025.</p>
+          <p>Language-oriented: YFU 6-month exchange program in Argentina (2026).</p>
+        </section>
+        <section>
+          <h2>Theater/Performance-oriented</h2>
+          <p>Poetry Out Loud, 1st place at school-wide competition (2026); Rumney Model Theater (2024-2025); Beetlejuice School Play (2024-2025).</p>
+        </section>
+        <section>
+          <h2>Leadership</h2>
+          <p>Leadership Committee for Chapel Hill/Carrboro High Schools; The Squidder Literary Magazine.</p>
+        </section>
+        <section>
+          <h2>Honors/Awards</h2>
+          <p>Chosen for Alternate position for National Kennedy-Lugar Youth Exchange and Study (YES) program, U.S. Department of State initiative.</p>
+        </section>
+      </div>
+    }
+    @default {
+      <div class="project-list">
+        @for (item of projectItems(); track item.title) {
+          <article class="project">
+            <div class="artwork placeholder-project" role="img" [attr.aria-label]="item.title + ' artwork placeholder'">
+              <span>{{ item.title }}</span>
+            </div>
+            <h2>{{ item.title }}</h2>
+            <p class="meta">{{ item.meta }}</p>
+            <p>{{ item.description }}</p>
+          </article>
+        }
+      </div>
+    }
+  }
 </main>
