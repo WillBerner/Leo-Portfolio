@@ -136,40 +136,63 @@ h1 {
 .resume {
   max-width: 100%;
   margin: 0 auto;
-  font-size: 0.72rem;
-  line-height: 1.45;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .resume section {
-  margin: 0 0 22px;
+  margin: 0 0 28px;
 }
 
 .resume h2 {
-  margin: 0 0 8px;
-  font-size: 0.76rem;
+  margin: 0 0 14px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .resume h3 {
-  margin: 12px 0 5px;
-  font-size: 0.72rem;
+  margin: 18px 0 6px;
+  font-size: 1rem;
 }
 
 .resume p {
-  margin: 5px 0;
+  margin: 4px 0;
 }
 
 .resume ul {
-  margin: 5px 0 12px;
-  padding-left: 18px;
+  margin: 4px 0 16px;
+  padding: 0;
+  list-style: none;
 }
 
 .resume li {
-  margin: 3px 0;
+  margin: 0;
 }
 
 .resume .hobbies {
   columns: 1;
+}
+
+[data-section='resume'] {
+  max-width: 700px;
+}
+
+[data-section='resume'] > h1 {
+  margin-bottom: 24px;
+  font-size: clamp(2.8rem, 6vw, 3.5rem);
+  letter-spacing: -0.045em;
+}
+
+.resume .resume-school,
+.resume .resume-subheading {
+  margin-left: 72px;
+}
+
+.resume .resume-subheading {
+  margin-top: 24px;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .section-footer {
@@ -213,6 +236,10 @@ h1 {
     padding-top: 28px;
     padding-right: 5%;
     padding-left: 5%;
+  }
+
+  [data-section='resume'] {
+    max-width: 100%;
   }
 
   h1 {
