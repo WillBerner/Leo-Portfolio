@@ -1,0 +1,163 @@
+:host {
+  display: block;
+}
+
+.portfolio-home {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 5% 56px;
+}
+
+.intro {
+  min-height: 330px;
+  display: grid;
+  grid-template-columns: 58% 42%;
+  align-items: start;
+}
+
+.portrait-title {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: center;
+  gap: 38px;
+}
+
+.portrait {
+  width: 220px;
+  height: 258px;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+h1 {
+  font-size: clamp(3.25rem, 5vw, 5.25rem);
+  line-height: 0.91;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.intro-details {
+  max-width: 470px;
+  padding: 0 12px 0 16px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.intro-details > p {
+  margin: 0 0 30px;
+}
+
+.contact h2 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+
+.contact p {
+  margin: 3px 0;
+}
+
+.contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.overview {
+  margin-top: 22px;
+}
+
+.overview h2 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0 0 28px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.work-card {
+  display: block;
+  min-width: 0;
+  aspect-ratio: 1 / 1.08;
+  background: #ddd;
+  overflow: hidden;
+}
+
+.placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #d6d3d1;
+  background-image:
+    linear-gradient(135deg, transparent 48%, rgba(35, 35, 35, 0.12) 49%, rgba(35, 35, 35, 0.12) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 48%, rgba(35, 35, 35, 0.08) 49%, rgba(35, 35, 35, 0.08) 51%, transparent 52%);
+  background-size: 28px 28px;
+}
+
+.art-one { background-color: #73d0d4; }
+.art-two { background-color: #cbd6c7; }
+.art-three { background-color: #9d3f42; }
+.art-four { background-color: #b8d2df; }
+
+@media (max-width: 980px) {
+  .intro {
+    grid-template-columns: 65% 35%;
+  }
+
+  .portrait-title {
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+  }
+
+  .portrait {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 720px) {
+  .portfolio-home {
+    padding-top: 36px;
+  }
+
+  .intro {
+    display: block;
+  }
+
+  .portrait-title {
+    grid-template-columns: 150px 1fr;
+  }
+
+  .portrait {
+    width: 150px;
+    height: 190px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .intro-details {
+    margin-top: 32px;
+    padding: 0;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
