@@ -1,95 +1,175 @@
 <main class="section-page">
   <h1>{{ title() }}</h1>
 
-  @switch (layout()) {
-    @case ('gallery') {
-      <div class="drawing-grid" aria-label="Life drawing artwork">
-        @for (item of galleryItems; track item) {
-          <div class="artwork placeholder-drawing" role="img" [attr.aria-label]="'Life drawing artwork placeholder ' + item">
-            <span>Artwork {{ item }}</span>
-          </div>
-        }
-      </div>
-    }
-    @case ('media') {
-      <div class="media-list">
-        @for (item of animationItems; track item.title) {
-          <article class="media-project">
-            <div class="video-placeholder" role="img" [attr.aria-label]="item.title + ' video placeholder'">
-              <span class="play-button" aria-hidden="true"></span>
-              <span>{{ item.title }}</span>
-            </div>
-            <h2>{{ item.title }}</h2>
-            <p class="meta">{{ item.meta }}</p>
-            <p>{{ item.description }}</p>
-          </article>
-        }
-      </div>
-    }
-    @case ('carousel') {
-      <div class="comic-list">
-        @for (item of comicItems; track item.title) {
-          <article class="comic-project">
-            <div class="carousel-art">
-              <button type="button" class="carousel-arrow previous" aria-label="Previous image">&#8249;</button>
-              <div class="artwork placeholder-comic" role="img" [attr.aria-label]="item.title + ' artwork placeholder'">
-                <span>{{ item.title }}</span>
+  @switch (section()) {
+    @case ('animation') {
+      <div class="project-list">
+        @for (project of projects(); track project.title) {
+          <article class="project">
+            @for (media of project.media; track media) {
+              <div class="media-placeholder video-placeholder" role="img" [attr.aria-label]="media + ' placeholder'">
+                <span class="play-button" aria-hidden="true"></span>
+                <span>{{ media }} — media coming soon</span>
               </div>
-              <button type="button" class="carousel-arrow next" aria-label="Next image">&#8250;</button>
-            </div>
-            <p class="carousel-count">1 / 7</p>
-            <h2>{{ item.title }}</h2>
-            <p class="meta">{{ item.meta }}</p>
-            <p>{{ item.description }}</p>
+            }
+            <h2>{{ project.title }}</h2>
+            <p class="meta"><em>{{ project.medium }}</em> ({{ project.date }})</p>
+            <p class="origin">{{ project.origin }}</p>
+            @if (project.description) {
+              <p>{{ project.description }}</p>
+            }
           </article>
         }
       </div>
+    }
+    @case ('comics') {
+      <div class="project-list">
+        @for (project of projects(); track project.title) {
+          <article class="project comic-project">
+            <div class="comic-grid" [attr.aria-label]="project.title + ' pages'">
+              @for (media of project.media; track media) {
+                <div class="media-placeholder comic-placeholder" role="img" [attr.aria-label]="media + ' placeholder'">
+                  <span>{{ media }}</span>
+                  <span class="placeholder-note">Image coming soon</span>
+                </div>
+              }
+            </div>
+            <h2>{{ project.title }}</h2>
+            <p class="meta"><em>{{ project.medium }}</em> ({{ project.date }})</p>
+            <p class="origin">{{ project.origin }}</p>
+            @if (project.description) {
+              <p>{{ project.description }}</p>
+            }
+          </article>
+        }
+      </div>
+    }
+    @case ('life-drawing') {
+      @for (project of projects(); track project.title) {
+        <article class="project figure-project">
+          <div class="drawing-grid" aria-label="Figure drawing gallery">
+            @for (media of project.media; track media) {
+              <div class="media-placeholder drawing-placeholder" role="img" [attr.aria-label]="media + ' placeholder'">
+                <span>{{ media }}</span>
+              </div>
+            }
+          </div>
+          <h2>{{ project.title }}</h2>
+          <p class="meta"><em>{{ project.medium }}</em> ({{ project.date }})</p>
+          <p class="origin">{{ project.origin }}</p>
+          @if (project.description) {
+            <p>{{ project.description }}</p>
+          }
+        </article>
+      }
     }
     @case ('resume') {
       <div class="resume">
         <section>
-          <p>Legal Name: Leo Andrew Berner</p>
-          <p>Preferred Name: Leo Rosimary Berner</p>
-          <p>Pronouns: They/Them/Elle</p>
+          <p><strong>Legal Name:</strong> Leo Andrew Berner</p>
+          <p><strong>Preferred Name:</strong> Leo Rosemary Berner</p>
+          <p><strong>Pronouns:</strong> They/Them/Elle</p>
         </section>
+
         <section>
           <h2>Education</h2>
-          <p>The Hawbridge School<br />Public charter in Saxapahaw, North Carolina with a focus on place-based education.</p>
-          <p>Current Cumulative Weighted GPA: 4.208</p>
+          <h3>The Hawbridge School</h3>
+          <p>Public charter in Saxapahaw, North Carolina with a focus on place-based education</p>
+          <p><strong>Current Cumulative Weighted GPA:</strong> 4.208</p>
         </section>
+
         <section>
           <h2>Activities</h2>
-          <p>Animator/Arts-oriented: Blender classes, Rio Grande, Argentina (2025); Polo Creating; Carolina Arts University of North Carolina School for the Arts; Animation 1 week-long residential intensive (2024, 2025); North Carolina State University; Media Arts, Design and Technology Weekends 2023-2025.</p>
-          <p>Language-oriented: YFU 6-month exchange program in Argentina (2026).</p>
+          <h3>Animation/arts oriented</h3>
+          <ul>
+            <li>Blender Classes at Polo Creativo, Río Grande, Argentina (2026)</li>
+            <li>University of North Carolina School for the Arts Animation 2 week-long Residential Intensive (2024, 25)</li>
+            <li>North Carolina State University Media Arts, Design and Technology Weekend Workshops (2-4 per year, 2023-25)</li>
+            <li>Week-long Design and Technology Summer Camps (2023, 24)</li>
+          </ul>
+
+          <h3>Language oriented</h3>
+          <ul>
+            <li>YFU 6-Month Exchange Program in Río Grande, Argentina (2026)</li>
+            <li>Lived with a host family, attended local schools, in complete Spanish immersion.</li>
+            <li>Travelled independently to multiple locations across Argentina, staying with host families or participating in week-long program activities along with other YFU students from around the world.</li>
+            <li>Spanish Honors Society (2025–2027)</li>
+            <li>Secretary for Spanish Honors Society (2026)</li>
+          </ul>
+
+          <h3>Theater/performance oriented</h3>
+          <ul>
+            <li>Poetry Out Loud First Place at School-wide Competition (January 2026)</li>
+            <li>Runway Model for Sladesign (2024, 2019)</li>
+            <li>Beetlejuice School Play (2024-25) (Acting)</li>
+            <li>Wizard of Oz School Play (2023-24) (Acting, Costumes, Writing)</li>
+            <li>Midsummer Night’s Dream School Play (2022-23) (Acting, Props)</li>
+            <li>Performing Arts Committee (2026-27)</li>
+          </ul>
+
+          <h3>Publications/leadership oriented</h3>
+          <ul>
+            <li>Leadership Committee for Carrboro/Chapel Hill Zine Fest (2026-27)</li>
+            <li>The Squiddler Literary Magazine (2024–2025)</li>
+            <li>The Vulture Post School Newspaper (2024-25)</li>
+            <li>President of Social Justice Club (2026-27)</li>
+            <li>Displayed at Zine Folk NC’s Student Showcase Table (2026)</li>
+            <li>Attended the Warren Wilson Climate Summit (2025)</li>
+          </ul>
         </section>
-        <section>
-          <h2>Theater/Performance-oriented</h2>
-          <p>Poetry Out Loud, 1st place at school-wide competition (2026); Rumney Model Theater (2024-2025); Beetlejuice School Play (2024-2025).</p>
-        </section>
-        <section>
-          <h2>Leadership</h2>
-          <p>Leadership Committee for Chapel Hill/Carrboro High Schools; The Squidder Literary Magazine.</p>
-        </section>
+
         <section>
           <h2>Honors/Awards</h2>
-          <p>Chosen for Alternate position for National Kennedy-Lugar Youth Exchange and Study (YES) program, U.S. Department of State initiative.</p>
+          <ul>
+            <li>Chosen for Alternate position for national Kennedy-Lugar Youth Exchange and Study (YES) program, a U.S. Department of State initiative for high school students to live and study for a year in countries with significant Muslim populations. (2025)</li>
+            <li>National Semi-Finalist for Future Leader Exchange Program (FLEX), a highly competitive, merit-based exchange program for U.S. high school students operating in Poland, Romania, Kazakhstan, and Georgia, funded by the U.S. Department of State (2025)</li>
+            <li>Hawbridge School Horticulture Student of the Year — May, 2025 (2024/25 school year)</li>
+            <li>National History Day Second Place in District Competition (2023/24)</li>
+          </ul>
         </section>
-        <section class="hobbies">
-          <h2>Hobbies/Passions:</h2>
-          <p>Sketching<br />Painting<br />Collage<br />Sewing<br />Printmaking<br />Animating<br />3D Modeling<br />Baking<br />Traveling, primarily internationally<br />Bouldering (Rock Climbing)<br />Acting<br />Contra-dance</p>
+
+        <section>
+          <h2>Personal Words I Would Use to Describe Myself</h2>
+          <p>Kind, thoughtful, creative, confident, cool, pensive, patient, gentle.</p>
+        </section>
+
+        <section>
+          <h2>Hobbies/Passions</h2>
+          <ul class="hobbies">
+            <li>Sketching</li>
+            <li>Painting</li>
+            <li>Collage</li>
+            <li>Sewing</li>
+            <li>Printmaking</li>
+            <li>Animating</li>
+            <li>3D Modeling</li>
+            <li>Baking</li>
+            <li>Traveling, primarily internationally</li>
+            <li>Bouldering (Rock Climbing)</li>
+            <li>Acting</li>
+            <li>Contra-dance</li>
+          </ul>
         </section>
       </div>
     }
     @default {
       <div class="project-list">
-        @for (item of projectItems(); track item.title) {
+        @for (project of projects(); track project.title) {
           <article class="project">
-            <div class="artwork placeholder-project" role="img" [attr.aria-label]="item.title + ' artwork placeholder'">
-              <span>{{ item.title }}</span>
+            <div class="project-media">
+              @for (media of project.media; track media) {
+                <div class="media-placeholder image-placeholder" role="img" [attr.aria-label]="media + ' placeholder'">
+                  <span>{{ media }}</span>
+                  <span class="placeholder-note">Image coming soon</span>
+                </div>
+              }
             </div>
-            <h2>{{ item.title }}</h2>
-            <p class="meta">{{ item.meta }}</p>
-            <p>{{ item.description }}</p>
+            <h2>{{ project.title }}</h2>
+            <p class="meta"><em>{{ project.medium }}</em> ({{ project.date }})</p>
+            <p class="origin">{{ project.origin }}</p>
+            @if (project.description) {
+              <p>{{ project.description }}</p>
+            }
           </article>
         }
       </div>
